@@ -28,22 +28,26 @@ $(".next").click(function(){
 function immaginiNext(){
 
  // memorizzare in una var l'immagine attiva
- var imgActive = $(".images img.active");
-
+var imgActive = $(".images img.active");
+var cerchioActive = $(".nav i.active")
 // Per prima cosa è necessario rimuovere la classe active
 // poi assegnarla all'immagine successiva o precedente
 
 // rimuovere la classe
 imgActive.removeClass("active");
+cerchioActive.removeClass("active");
 
 // riassegnare la classe alla successiva
 // se active è sull'ultima img non può andare oltre quindi va assegnata alla prima
 if (imgActive.hasClass("last")) {  //==True
     $(".images img.first").addClass("active");
+    $(".nav i.first").addClass("active");
 } else {
     imgActive.next().addClass("active");
+    cerchioActive.next().addClass("active");
 }
 }
-
+// per i cerchi del nav il procedimento è simile e posso includerli nella stessa funzione
+// perché seguono le img
 
 }); //chiusura document.ready
