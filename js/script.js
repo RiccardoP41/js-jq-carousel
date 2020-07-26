@@ -18,11 +18,13 @@ $(".next").click(function(){
     immaginiNext();
 });
 
+
+// *****************BONUS
 $(".nav i").click(function(){
 
-    var questo = this; // <----- Fondamentale salvare in una var (this) se crei una funzione esterna da richiamare
-    console.log(questo);
-    dotClick(questo); // <----- CON FUNZIONE DA RICHIAMARE
+    // var questo = this; // <----- Fondamentale salvare in una var (this) se crei una funzione esterna da richiamare
+    // console.log(questo);
+    // dotClick(questo); // <----- CON FUNZIONE DA RICHIAMARE
 
 // SENZA CREARE UNA FUNZIONE APPOSTA
 
@@ -47,6 +49,23 @@ $(".nav i").click(function(){
 //         $(".images img").last().addClass("active");
 //     }
 //
+
+// **************Con INDEX ed EQ*******************
+
+// Trovo la posizione del pallino clickato
+    var posizione = $(this).index();
+
+// rimuovere la classe "active" dall'immagine
+    $(".images img").removeClass("active");
+
+// dare la classe active all'img tramite "eq"
+    $(".images img").eq(posizione).addClass("active");
+
+// rimuovo la class "active" da tutti i pallini
+    $(".nav i").removeClass("active");
+
+// dare la classe active al pallino cliccato tramite "eq"
+    $(".nav i").eq(posizione).addClass("active");
 })
 
 // FUNZIONI
@@ -100,31 +119,31 @@ function immaginiPrev(){
 
 // ******************funzione dotClick**************************
 
-function dotClick(a){  //<------- (a) segnaposto per il (this) che deve fare riferimento all'elemento cliccato
-
-// come prima devo prima rimuovere "active"
-    var imgActive = $(".images img.active");
-    var cerchioActive = $(".nav i.active");
-
-    imgActive.removeClass("active");
-    cerchioActive.removeClass("active");
-
-// riassegnarlo al cerchio che ho cliccato
-    $(a).addClass("active");  //<------- (a) segnaposto per il (this) che deve fare riferimento all'elemento cliccato
-
-// assegnarla anche all'img corrispondente
-
-    if ($(".nav i").first().hasClass("active")){
-        $(".images img").first().addClass("active");
-    } else if ($(".nav i:nth-child(2)").hasClass("active")) {
-        $(".images img:nth-child(2)").addClass("active");
-    }  else if ($(".nav i:nth-child(3)").hasClass("active")){
-        $(".images img:nth-child(3)").addClass("active");
-    }   else if($(".nav i").last().hasClass("active")){
-        $(".images img").last().addClass("active");
-    }
-
-
-}
+// function dotClick(a){  //<------- (a) segnaposto per il (this) che deve fare riferimento all'elemento cliccato
+//
+// // come prima devo prima rimuovere "active"
+//     var imgActive = $(".images img.active");
+//     var cerchioActive = $(".nav i.active");
+//
+//     imgActive.removeClass("active");
+//     cerchioActive.removeClass("active");
+//
+// // riassegnarlo al cerchio che ho cliccato
+//     $(a).addClass("active");  //<------- (a) segnaposto per il (this) che deve fare riferimento all'elemento cliccato
+//
+// // assegnarla anche all'img corrispondente
+//
+//     if ($(".nav i").first().hasClass("active")){
+//         $(".images img").first().addClass("active");
+//     } else if ($(".nav i:nth-child(2)").hasClass("active")) {
+//         $(".images img:nth-child(2)").addClass("active");
+//     }  else if ($(".nav i:nth-child(3)").hasClass("active")){
+//         $(".images img:nth-child(3)").addClass("active");
+//     }   else if($(".nav i").last().hasClass("active")){
+//         $(".images img").last().addClass("active");
+//     }
+//
+//
+// }
 
 }); //chiusura document.ready
